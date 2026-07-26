@@ -1,25 +1,26 @@
----
-
-### 📄 File 3: `hardware_audit_checklist.md` (Biên bản đối chiếu phần cứng)
-
-```markdown
 # ⚡ BIÊN BẢN ĐỐI CHIẾU VÀ KIỂM TRA ĐẤU NỐI PHẦN CỨNG
 
-**Mục tiêu:** Rà soát tủ điện thực tế so với sơ đồ nguyên lý.  
-**Ngày thực hiện:** [Điền ngày]
+**Mục tiêu:** Rà soát tủ điện thực tế so với sơ đồ nguyên lý phần cứng[cite: 4].
+**Ngày thực hiện:** 21/07/2026
+**Người kiểm tra:** Vũ Thành Đạt
 
 ### Bảng Kiểm Tra (Hardware Checklist)
 
-| Hạng mục kiểm tra | Chân đấu nối (Sơ đồ) | Trạng thái | Đánh giá / Ghi chú |
+| Hạng mục kiểm tra | Chân đấu nối vật lý | Trạng thái | Đánh giá / Ghi chú |
 | :--- | :--- | :---: | :--- |
-| **Nguồn cấp mạch lực** | Q1 -> L1, L2, L3 (Driver) | 🟢 Đã đấu nối | Chắc chắn, có dùng domino chia nhánh |
-| **Nguồn mạch điều khiển** | Q1 -> L1C, L2C (Driver) | 🟢 Đã đấu nối | Tách biệt an toàn với mạch lực |
-| **Cấp nguồn Servo-ON** | Nguồn 24V -> Chân 1 (CN1) | ⚠️ Lưu ý | Cần đảm bảo có Jumper nối tắt từ Chân 1 sang Chân 25 và 49 để cấp điện trở nội. |
-| **Tín hiệu băm xung** | Y0 (PLC) -> Chân 12 (PULS-) | 🟢 Đã kiểm tra | Đúng logic âm (dập mass). |
-| **Tín hiệu đảo chiều** | Y1 (PLC) -> Chân 14 (SIGN-) | 🟢 Đã kiểm tra | Đúng logic âm (dập mass). |
-| **Bypass an toàn** | Chân 10 (E-STOP) -> 0V/GND | 🟢 Đã nối tắt | Driver không báo lỗi E-STOP ảo. |
-| **Khóa phanh từ (Brake)**| Y2 (PLC) -> Rơ-le -> BK+/BK- | 🟢 Đã đấu nối | Rơ-le trung gian hoạt động tốt, bảo vệ PLC. |
+| **Nguồn cấp PLC Delta** | Nguồn 24VDC -> Chân `UP` (+24V) và `ZP` (0V) | 🟢 Đã đấu nối | Cấp nguồn cho ngõ ra Transistor NPN của PLC[cite: 4]. |
+| **Nguồn cấp mạch lực** | Q1 -> L1, L2, L3 (Driver CSD7) | 🟢 Đã đấu nối | Chắc chắn, có dùng domino chia nhánh. |
+| **Nguồn mạch điều khiển** | Q1 -> L1C, L2C (Driver CSD7) | 🟢 Đã đấu nối | Tách biệt an toàn với mạch lực. |
+| **Jumper nguồn nội Driver**| Nguồn 24V -> Chân 1, 25 (`SIGN+`), 49 (`PULS+`) | ⚠️ Lưu ý | Cần đảm bảo nối tắt Jumper trong cổng DB50 để cấp điện trở hạn dòng nội 2kΩ[cite: 4]. |
+| **Tín hiệu băm xung** | `Y0` (PLC) -> Chân 12 (`PULS-`) | 🟢 Đã kiểm tra | Đúng chuẩn ngõ ra Transistor NPN dập mass tạo xung vuông[cite: 4]. |
+| **Tín hiệu đảo chiều** | `Y1` (PLC) -> Chân 14 (`SIGN-`) | 🟢 Đã kiểm tra | Y1 = OFF (Quay Phải), Y1 = ON (Quay Trái)[cite: 4]. |
+| **Tín hiệu Servo-ON** | `Y5` (PLC) -> Chân 3 (`SV-ON`) | 🟢 Đã kiểm tra | Khi PLC RUN, Y5 dập mass để khóa cứng cốt Servo[cite: 4]. |
+| **Truyền thông RS485** | `D+`/`D-` (COM2 PLC) -> `D+`/`D-` (USB-RS485) | 🔴 Cần fix | Kiểm tra lại độ xoắn của cáp để chống nhiễu sóng Modbus RTU[cite: 4]. |
+| **Bypass an toàn** | Chân 10 (E-STOP) -> 0V/GND | 🟢 Đã nối tắt | Hàn chụm xuống GND để bypass E-STOP ảo trong pha thử nghiệm bàn máy[cite: 4]. |
+| **Kết nối Motor** | Cổng CN2 và cáp U, V, W -> Servo Motor | 🟢 Đã đấu nối | Cáp Encoder 17-bit cắm chặt, Driver không báo lỗi E.xxx[cite: 4]. |
 
-*Chú thích trạng thái:*
-* 🟢: Passed / Hoạt động tốt
-* ⚠️: Cần lưu ý / Needs Fix
+---
+### *Chú thích trạng thái:*
+* 🟢 **Passed:** Đã đấu nối đúng và hoạt động tốt.
+* ⚠️ **Needs Check:** Đã đấu nối nhưng cần lưu ý kỹ thuật đặc biệt.
+* 🔴 **Action Required:** Lỗi, đấu nối sai hoặc chưa thực hiện.
