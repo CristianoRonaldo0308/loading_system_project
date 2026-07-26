@@ -15,7 +15,7 @@
 | **Tín hiệu băm xung** | `Y0` (PLC) -> Chân 12 (`PULS-`) | 🟢 Đã kiểm tra | Đúng chuẩn ngõ ra Transistor NPN dập mass tạo xung vuông[cite: 4]. |
 | **Tín hiệu đảo chiều** | `Y1` (PLC) -> Chân 14 (`SIGN-`) | 🟢 Đã kiểm tra | Y1 = OFF (Quay Phải), Y1 = ON (Quay Trái)[cite: 4]. |
 | **Tín hiệu Servo-ON** | `Y5` (PLC) -> Chân 3 (`SV-ON`) | 🟢 Đã kiểm tra | Khi PLC RUN, Y5 dập mass để khóa cứng cốt Servo[cite: 4]. |
-| **Truyền thông RS485** | `D+`/`D-` (COM2 PLC) -> `D+`/`D-` (USB-RS485) | 🔴 Cần fix | Kiểm tra lại độ xoắn của cáp để chống nhiễu sóng Modbus RTU[cite: 4]. |
+| **Truyền thông RS485** | `D+`/`D-` (COM2 PLC) -> `D+`/`D-` (USB-RS485) | 🟢 Đã kiểm tra | Đã đấu đúng cực, cáp xoắn tốt, đảm bảo truyền thông Modbus RTU ổn định[cite: 4]. |
 | **Bypass an toàn** | Chân 10 (E-STOP) -> 0V/GND | 🟢 Đã nối tắt | Hàn chụm xuống GND để bypass E-STOP ảo trong pha thử nghiệm bàn máy[cite: 4]. |
 | **Kết nối Motor** | Cổng CN2 và cáp U, V, W -> Servo Motor | 🟢 Đã đấu nối | Cáp Encoder 17-bit cắm chặt, Driver không báo lỗi E.xxx[cite: 4]. |
 
