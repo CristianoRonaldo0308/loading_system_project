@@ -1,8 +1,7 @@
 # 📝 BÁO CÁO CODE REVIEW: PHÂN HỆ RUST BACKEND & PLC
 
 **Ngày thực hiện:** 20/07/2026  
-**Người thực hiện:** [Tên của bạn]  
-**Người đánh giá (Senior):** Anh Thạch
+**Người thực hiện:** [Vũ Thành Đạt]  
 
 ---
 
@@ -22,4 +21,3 @@
 - [ ] 🟠 **[BUG-03] Mâu thuẫn thông số hộp số điện tử:** 
   - **Vấn đề:** Code Rust hardcode 360 độ = 120.000 xung. Tài liệu thiết kế lại ghi 360 độ = 1.000 xung. 
   - **Đề xuất fix:** Thống nhất lại tử số/mẫu số (Ft-3.05 và Ft-3.06) trên Servo Driver CSD7.
-  
